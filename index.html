@@ -1,0 +1,57 @@
+aside class="tool-panel" id="toolPanel">
+  <div class="panel-head"><div><b id="panelTitle">مكتبة الوسائط</b><small id="panelSub">كل ملفات مشروعك في مكان واحد</small></div><button class="tiny-btn" id="collapsePanel">−</button></div>
+  <div class="search-box"><span>⌕</span><input id="toolSearch" placeholder="ابحث عن أداة أو ملف..."></div>
+  <div class="panel-content" id="panelContent">
+    <div class="dropzone" id="dropZone"><div class="drop-icon">＋</div><b>أضف ملفاتك إلى المشروع</b><small>فيديو • صور • صوت • ملفات ترجمة</small><button class="outline-btn" id="uploadBtn">اختيار من الجهاز</button><input id="fileInput" type="file" multiple hidden accept="video/*,image/*,audio/*"></div>
+    <div class="section-label">مصادر الاستيراد</div>
+    <button class="source-row" data-action="link"><span>↗</span><div><b>استيراد من رابط</b><small>رابط فيديو أو مصدر متاح</small></div><i>›</i></button>
+    <button class="source-row" data-action="camera"><span>◉</span><div><b>الكاميرا والتسجيل</b><small>التقاط فيديو أو صوت</small></div><i>›</i></button>
+    <button class="source-row" data-action="cloud"><span>☁</span><div><b>المكتبة السحابية</b><small>ملفاتك عبر أجهزتك</small></div><i>›</i></button>
+    <div class="section-label">ملفات المشروع</div><div id="assetList" class="asset-list"><div class="empty-state">لم تتم إضافة ملفات بعد</div></div>
+  </div>
+</aside>
+
+<main class="editor">
+  <div class="studio-tabs">
+    <button class="studio-tab active" data-studio="video">🎬 استوديو الفيديو</button>
+    <button class="studio-tab" data-studio="dubbing">🎙 استوديو الدبلجة</button>
+    <button class="studio-tab" data-studio="image">▧ استوديو الصور</button>
+    <button class="studio-tab" data-studio="audio">♫ استوديو الصوت</button>
+    <div class="tab-spacer"></div><span class="format-chip">4K • 60 FPS</span><button class="tiny-btn" id="orientationHint">↔ ملائم للشاشة</button>
+  </div>
+
+  <div class="editor-grid">
+    <section class="preview-column">
+      <div class="preview-toolbar"><div><b>معاينة العمل</b><small>المشهد الحالي • إطار 01</small></div><div class="preview-tools"><button class="tiny-btn">⛶</button><button class="tiny-btn">⋯</button></div></div>
+      <div class="preview-stage" id="previewStage">
+        <div class="preview-placeholder" id="previewPlaceholder"><div class="play-orb">▶</div><b>مساحة المعاينة الذكية</b><small>أضف فيديو أو صورة، أو اطلب من Limo AI إنشاء مشهد</small><button class="primary-btn" id="addMedia">＋ إضافة وسائط</button></div>
+        <video id="videoPreview" controls playsinline hidden></video>
+        <img id="imagePreview" alt="معاينة الصورة" hidden>
+        <div class="safe-frame">16:9</div>
+      </div>
+      <div class="playback-bar"><button class="transport" id="playBtn">▶</button><button class="transport">◀</button><button class="transport">▶|</button><span class="timecode">00:00:00:00 <i>/</i> 00:00:30:00</span><div class="playback-spacer"></div><span class="zoom-label">تكبير المسار</span><input type="range" min="1" max="100" value="35"></div>
+      <div class="timeline">
+        <div class="timeline-head"><b>المخطط الزمني</b><div><button class="tiny-btn">＋ مسار</button><button class="tiny-btn">⌖</button><button class="tiny-btn">⋯</button></div></div>
+        <div class="timeline-ruler"><span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span><span>00:25</span><span>00:30</span></div>
+        <div class="track"><label>▣ فيديو 1</label><div class="track-lane"><div class="clip clip-video">المشهد الرئيسي</div></div></div>
+        <div class="track"><label>♫ صوت 1</label><div class="track-lane"><div class="clip clip-audio">الموسيقى / الصوت</div></div></div>
+        <div class="track"><label>T نصوص</label><div class="track-lane"><div class="clip clip-text">عنوان أو ترجمة</div></div></div>
+        <div class="track"><label>✧ مؤثرات</label><div class="track-lane"></div></div>
+      </div>
+    </section>
+
+    <aside class="inspector">
+      <div class="inspector-head"><b>لوحة التحكم</b><span class="status-pill">جاهز للعمل</span></div>
+      <div class="inspector-tabs"><button class="active">خصائص</button><button>طبقات</button><button>معلومات</button></div>
+      <div class="control-group"><div class="control-title">إعدادات المشروع</div><label>اسم المشروع<input id="projectInput" value="مشروع جديد"></label><div class="two-fields"><label>الأبعاد<select><option>16:9 أفقي</option><option>9:16 عمودي</option><option>1:1 مربع</option><option>4:5 اجتماعي</option></select></label><label>الدقة<select><option>4K</option><option>1080p</option><option>720p</option></select></label></div></div>
+      <div class="control-group"><div class="control-title">تحسين ذكي سريع</div><button class="quick-action">✦ تحسين تلقائي للصورة والصوت <span>›</span></button><button class="quick-action">◉ إزالة الخلفية أو عنصر <span>›</span></button><button class="quick-action">字幕 إنشاء ترجمة تلقائية <span>›</span></button></div>
+      <div class="control-group"><div class="control-title">الخصائص المتقدمة</div><div class="mini-control"><span>السطوع</span><input type="range" value="50"></div><div class="mini-control"><span>التباين</span><input type="range" value="50"></div><div class="mini-control"><span>التشبع</span><input type="range" value="50"></div></div>
+    </aside>
+  </div>
+
+  <section class="ai-dock">
+    <div class="ai-brand"><div class="ai-star">✦</div><div><b>LIMO AI</b><small>مساعدك الإبداعي المتكامل</small></div></div>
+    <div class="ai-prompt"><input id="aiPrompt" placeholder="اكتب أو تحدث: قصّ اللقطة، أزل الخلفية، ترجم الصوت إلى العربية..."><button class="mic-btn" title="إملاء صوتي">🎙</button><button class="send-ai" id="sendAI">إرسال ↗</button></div>
+    <div class="ai-shortcuts"><button>توليد فيديو</button><button>توليد صورة</button><button>دبلجة وترجمة</button><button>تنظيف الصوت</button><button>اقتراح مونتاج</button></div>
+  </section>
+</main>
